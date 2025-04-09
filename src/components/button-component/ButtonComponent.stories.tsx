@@ -1,4 +1,3 @@
-import React from "react";
 import { ButtonComponent } from "./ButtonComponent";
 
 export const Default = () => <ButtonComponent title='Cliccami' />;
