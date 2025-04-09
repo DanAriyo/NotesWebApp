@@ -13,7 +13,7 @@ button:disabled {
 
 #root {
     background-color: rgb(250, 249, 248);
-    padding: 20px;
+    padding: 1rem;
     flex-direction: column;
     justify-content: center;
 }
