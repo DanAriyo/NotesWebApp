@@ -1,49 +1,37 @@
-import { useEffect, useState } from "react";
+import { useLiveQuery } from "dexie-react-hooks";
+import { useCallback, useMemo, useState } from "react";
+
 import { ButtonComponent } from "../../components/ButtonComponent";
-import NotesDetailsPopupComponent from "./components/NotesDetailsPopupComponent";
+import InputSearchComponent from "../../components/InputSearchComponent";
 import { db, Note } from "../../data/Database";
 import NoteListItemComponent from "./components/NoteListItemComponent";
-import { useLiveQuery } from "dexie-react-hooks";
-import InputSearchComponent from "../../components/InputSearchComponent";
+import NotesDetailsPopupComponent from "./components/NotesDetailsPopupComponent";
+
+const createEmptyNote = (): Note => {
+  return {
+    id: 0,
+    title: "",
+    description: "",
+  };
+};
 
 function NotesPage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [searchString, setSearchString] = useState("");
-
-  const createEmptyNote = (): Note => {
-    return {
-      id: 0,
-      title: "",
-      description: "",
-    };
-  };
   const [selectedNote, setSelectedNote] = useState<Note>(createEmptyNote());
 
-  const allNotes = useLiveQuery(() => db.notes.toArray()) ?? [];
+  const dbNotes = useLiveQuery(() => db.notes.toArray());
 
-  useEffect(() => {
-    if (allNotes) {
-      setNotes(allNotes);
-    }
-  }, [allNotes]);
+  const filteredNotes = useMemo(() => {
+    if (!dbNotes) return [];
+    if (searchString === "") return dbNotes;
 
-  useEffect(() => {
-    if (searchString.trim() === "") {
-      handleNotes(allNotes);
-    } else {
-      const filteredNotes = notes.filter(
-        (note) =>
-          note.title.toLowerCase().includes(searchString.toLowerCase()) ||
-          note.description.toLowerCase().includes(searchString.toLowerCase())
-      );
-      handleNotes(filteredNotes.length > 0 ? filteredNotes : notes);
-    }
-  }, [searchString]);
-
-  const handleNotes = (notes: Note[]) => {
-    setNotes(notes);
-  };
+    return dbNotes.filter(
+      (note) =>
+        note.title.toLowerCase().includes(searchString.toLowerCase()) ||
+        note.description.toLowerCase().includes(searchString.toLowerCase())
+    );
+  }, [searchString, dbNotes]);
 
   async function addNote(
     title: string,
@@ -69,7 +57,7 @@ function NotesPage() {
           description,
         });
       }
-      setIsOpen(false);
+      setIsPopupOpen(false);
     } catch (error) {
       console.error("Errore durante l'inserimento della nota:", error);
       return { success: false, message: "Inserimento non riuscito!" };
@@ -92,35 +80,38 @@ function NotesPage() {
     }
   }
 
-  function toggle(note: Note) {
-    setIsOpen((value) => !value);
+  const showNotePopup = useCallback((note: Note) => {
+    setIsPopupOpen((value) => !value);
     setSelectedNote(note);
-  }
+  }, []);
 
   return (
     <>
-      <div className='flex flex-col justify-center mx-auto'>
+      <div className="flex flex-col justify-center mx-auto">
         <InputSearchComponent
           setSearchString={setSearchString}
           value={searchString}
         />
-        <div className='flex flex-col mx-auto m-1.5 shadow-2xl'>
+        <div className="flex flex-col mx-auto m-1.5 shadow-2xl">
           <ButtonComponent
-            title='Crea nuova nota'
+            title="Crea nuova nota"
             onClick={() => {
-              toggle(createEmptyNote());
+              showNotePopup(createEmptyNote());
             }}
-            className='w-50 '
+            className="w-50 "
           />
         </div>
         <NotesDetailsPopupComponent
-          isOpen={isOpen}
-          onClosed={() => setIsOpen(false)}
+          isOpen={isPopupOpen}
+          onClosed={() => setIsPopupOpen(false)}
           onSave={addNote}
           item={selectedNote}
           onDelete={deleteNote}
         />
-        <NoteListItemComponent notes={notes} toggle={toggle} />
+        <NoteListItemComponent
+          notes={filteredNotes}
+          noteClicked={showNotePopup}
+        />
       </div>
     </>
   );
