@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+button:disabled {
+    background-color: #ccc;
+    /* Cambia il colore di sfondo per il bottone disabilitato */
+    color: #777;
+    /* Cambia il colore del testo per il bottone disabilitato */
+    cursor: not-allowed;
+    /* Cambia il cursore per far capire che il bottone è disabilitato */
+    opacity: 0.5;
+    /* Riduce l'opacità per dare un effetto visivo di disabilitazione */
+}
+
+#root {
+    background-color: rgb(250, 249, 248);
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+button {
+    background-color: #cacaca90;
+    border: 4px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: #bfbebefe;
+}
+
+html,
+body,
+#root {
+    min-height: 100vh;
+}
+
+.defaultNote {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
+    border-width: 2px;
+    border-color: #D1D5DB;
+    padding: 3px;
+    border-radius: 1rem;
+    width: 350px;
+    max-width: max-content;
+}
+
+.hidden-on-hover {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.box:hover .hidden-on-hover {
+    opacity: 1;
+}
