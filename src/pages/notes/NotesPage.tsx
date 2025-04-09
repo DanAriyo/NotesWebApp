@@ -2,7 +2,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { useCallback, useMemo, useState } from "react";
 
 import { ButtonComponent } from "../../components/button-component/ButtonComponent";
-import InputSearchComponent from "../../components/InputSearchComponent";
+import InputSearchComponent from "../../components/input-search-component/InputSearchComponent";
 import { db, Note } from "../../data/Database";
 import NoteListItemComponent from "./components/NoteListItemComponent";
 import NotesDetailsPopupComponent from "./components/NotesDetailsPopupComponent";
