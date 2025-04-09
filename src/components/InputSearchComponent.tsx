@@ -1,32 +1,9 @@
-import { Note } from "../data/Database";
-import { useEffect, useState } from "react";
-
 type InputSearchProps = {
-  notes: Note[];
-  handleNotes: (notes: Note[]) => void;
-  allNotes: Note[];
+  setSearchString: (value: string) => void;
+  value: string;
 };
 
-function InputSearchComponent({
-  notes,
-  handleNotes,
-  allNotes,
-}: InputSearchProps) {
-  const [searchString, setSearchString] = useState("");
-
-  useEffect(() => {
-    if (searchString.trim() === "") {
-      handleNotes(allNotes);
-    } else {
-      const notes2 = notes.filter(
-        (note) =>
-          note.title.toLowerCase().includes(searchString.toLowerCase()) ||
-          note.description.toLowerCase().includes(searchString.toLowerCase())
-      );
-      handleNotes(notes2.length > 0 ? notes2 : notes);
-    }
-  }, [searchString]);
-
+function InputSearchComponent({ setSearchString, value }: InputSearchProps) {
   return (
     <div className='flex flex-col justify-center m-2 p-2'>
       <input
@@ -34,7 +11,7 @@ function InputSearchComponent({
         id='filter'
         name='filter'
         placeholder='Cerca tra le note'
-        value={searchString}
+        value={value}
         onChange={(e) => {
           setSearchString(e.target.value);
         }}

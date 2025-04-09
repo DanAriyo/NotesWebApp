@@ -1,35 +1,37 @@
-import { useEffect, useState } from "react";
+import { useLiveQuery } from "dexie-react-hooks";
+import { useCallback, useMemo, useState } from "react";
+
 import { ButtonComponent } from "../../components/ButtonComponent";
-import NotesDetailsPopupComponent from "./components/NotesDetailsPopupComponent";
+import InputSearchComponent from "../../components/InputSearchComponent";
 import { db, Note } from "../../data/Database";
 import NoteListItemComponent from "./components/NoteListItemComponent";
-import { useLiveQuery } from "dexie-react-hooks";
-import InputSearchComponent from "../../components/InputSearchComponent";
+import NotesDetailsPopupComponent from "./components/NotesDetailsPopupComponent";
+
+const createEmptyNote = (): Note => {
+  return {
+    id: 0,
+    title: "",
+    description: "",
+  };
+};
 
 function NotesPage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [notes2, setNotes2] = useState<Note[]>([]);
-
-  const createEmptyNote = (): Note => {
-    return {
-      id: 0,
-      title: "",
-      description: "",
-    };
-  };
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [searchString, setSearchString] = useState("");
   const [selectedNote, setSelectedNote] = useState<Note>(createEmptyNote());
 
-  const allNotes = useLiveQuery(() => db.notes.toArray()) ?? [];
+  const dbNotes = useLiveQuery(() => db.notes.toArray());
 
-  useEffect(() => {
-    if (allNotes) {
-      setNotes2(allNotes);
-    }
-  }, [allNotes]);
+  const filteredNotes = useMemo(() => {
+    if (!dbNotes) return [];
+    if (searchString === "") return dbNotes;
 
-  const handleNotes = (notes3: Note[]) => {
-    setNotes2(notes3);
-  };
+    return dbNotes.filter(
+      (note) =>
+        note.title.toLowerCase().includes(searchString.toLowerCase()) ||
+        note.description.toLowerCase().includes(searchString.toLowerCase())
+    );
+  }, [searchString, dbNotes]);
 
   async function addNote(
     title: string,
@@ -55,7 +57,7 @@ function NotesPage() {
           description,
         });
       }
-      setIsOpen(false);
+      setIsPopupOpen(false);
     } catch (error) {
       console.error("Errore durante l'inserimento della nota:", error);
       return { success: false, message: "Inserimento non riuscito!" };
@@ -78,36 +80,38 @@ function NotesPage() {
     }
   }
 
-  function toggle(note: Note) {
-    setIsOpen((value) => !value);
+  const showNotePopup = useCallback((note: Note) => {
+    setIsPopupOpen((value) => !value);
     setSelectedNote(note);
-  }
+  }, []);
 
   return (
     <>
-      <div className='flex flex-col justify-center mx-auto'>
+      <div className="flex flex-col justify-center mx-auto">
         <InputSearchComponent
-          notes={notes2}
-          handleNotes={handleNotes}
-          allNotes={allNotes}
+          setSearchString={setSearchString}
+          value={searchString}
         />
-        <div className='flex flex-col mx-auto m-1.5 shadow-2xl'>
+        <div className="flex flex-col mx-auto m-1.5 shadow-2xl">
           <ButtonComponent
-            title='Crea nuova nota'
+            title="Crea nuova nota"
             onClick={() => {
-              toggle(createEmptyNote());
+              showNotePopup(createEmptyNote());
             }}
-            className='w-50 '
+            className="w-50 "
           />
         </div>
         <NotesDetailsPopupComponent
-          isOpen={isOpen}
-          onClosed={() => setIsOpen(false)}
+          isOpen={isPopupOpen}
+          onClosed={() => setIsPopupOpen(false)}
           onSave={addNote}
           item={selectedNote}
           onDelete={deleteNote}
         />
-        <NoteListItemComponent notes={allNotes} toggle={toggle} />
+        <NoteListItemComponent
+          notes={filteredNotes}
+          noteClicked={showNotePopup}
+        />
       </div>
     </>
   );
