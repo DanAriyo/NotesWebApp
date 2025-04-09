@@ -46,14 +46,14 @@ const NotesDetailsPopupComponent = ({
               valueChanged={setTitle}
               isEditable={item.id == 0 ? isEditable : !isEditable}
               placeholder={item.id == 0 ? true : false}
-              className='p-1.5 border-2 m-1 font-semibold'
+              className='p-1.5 m-1 font-semibold'
             ></InputTextComponent>
             <InputTextAreaComponent
               value={description}
               valueChanged={setDescription}
               isEditable={item.id == 0 ? isEditable : !isEditable}
               placeHolder={item.id == 0 ? true : false}
-              className='p-1.5 border-2 m-1'
+              className='p-1.5 m-1 resize-none'
             ></InputTextAreaComponent>
           </form>
 

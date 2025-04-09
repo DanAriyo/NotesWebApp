@@ -19,14 +19,14 @@ button:disabled {
 }
 
 button {
-    background-color: #cacaca90;
+    background-color: white;
     border: 4px;
     padding: 10px;
     border-radius: 20px;
 }
 
 button:hover {
-    background-color: #bfbebefe;
+    background-color: #cacaca90;
 }
 
 html,

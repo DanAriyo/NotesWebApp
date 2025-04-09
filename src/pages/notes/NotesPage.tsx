@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ButtonComponent } from "../../components/ButtonComponent";
 import NotesDetailsPopupComponent from "./components/NotesDetailsPopupComponent";
 import { db, Note } from "../../data/Database";
