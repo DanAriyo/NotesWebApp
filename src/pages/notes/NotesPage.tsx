@@ -8,7 +8,7 @@ import InputSearchComponent from "../../components/InputSearchComponent";
 
 function NotesPage() {
   const [isOpen, setIsOpen] = useState(false);
-  const [notes2, setNotes2] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<Note[]>([]);
   const [searchString, setSearchString] = useState("");
 
   const createEmptyNote = (): Note => {
@@ -24,7 +24,7 @@ function NotesPage() {
 
   useEffect(() => {
     if (allNotes) {
-      setNotes2(allNotes);
+      setNotes(allNotes);
     }
   }, [allNotes]);
 
@@ -32,17 +32,17 @@ function NotesPage() {
     if (searchString.trim() === "") {
       handleNotes(allNotes);
     } else {
-      const filteredNotes = notes2.filter(
+      const filteredNotes = notes.filter(
         (note) =>
           note.title.toLowerCase().includes(searchString.toLowerCase()) ||
           note.description.toLowerCase().includes(searchString.toLowerCase())
       );
-      handleNotes(filteredNotes.length > 0 ? filteredNotes : notes2);
+      handleNotes(filteredNotes.length > 0 ? filteredNotes : notes);
     }
   }, [searchString]);
 
   const handleNotes = (notes: Note[]) => {
-    setNotes2(notes);
+    setNotes(notes);
   };
 
   async function addNote(
@@ -120,7 +120,7 @@ function NotesPage() {
           item={selectedNote}
           onDelete={deleteNote}
         />
-        <NoteListItemComponent notes={notes2} toggle={toggle} />
+        <NoteListItemComponent notes={notes} toggle={toggle} />
       </div>
     </>
   );
