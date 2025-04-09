@@ -32,17 +32,17 @@ function NotesPage() {
     if (searchString.trim() === "") {
       handleNotes(allNotes);
     } else {
-      const notes3 = notes2.filter(
+      const filteredNotes = notes2.filter(
         (note) =>
           note.title.toLowerCase().includes(searchString.toLowerCase()) ||
           note.description.toLowerCase().includes(searchString.toLowerCase())
       );
-      handleNotes(notes2.length > 0 ? notes3 : notes2);
+      handleNotes(filteredNotes.length > 0 ? filteredNotes : notes2);
     }
   }, [searchString]);
 
-  const handleNotes = (notes3: Note[]) => {
-    setNotes2(notes3);
+  const handleNotes = (notes: Note[]) => {
+    setNotes2(notes);
   };
 
   async function addNote(
