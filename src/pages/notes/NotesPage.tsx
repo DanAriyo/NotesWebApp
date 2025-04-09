@@ -1,7 +1,7 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { useCallback, useMemo, useState } from "react";
 
-import { ButtonComponent } from "../../components/ButtonComponent";
+import { ButtonComponent } from "../../components/button-component/ButtonComponent";
 import InputSearchComponent from "../../components/InputSearchComponent";
 import { db, Note } from "../../data/Database";
 import NoteListItemComponent from "./components/NoteListItemComponent";
@@ -87,18 +87,18 @@ function NotesPage() {
 
   return (
     <>
-      <div className="flex flex-col justify-center mx-auto">
+      <div className='flex flex-col justify-center mx-auto'>
         <InputSearchComponent
           setSearchString={setSearchString}
           value={searchString}
         />
-        <div className="flex flex-col mx-auto m-1.5 shadow-2xl">
+        <div className='flex flex-col mx-auto m-1.5 shadow-2xl'>
           <ButtonComponent
-            title="Crea nuova nota"
+            title='Crea nuova nota'
             onClick={() => {
               showNotePopup(createEmptyNote());
             }}
-            className="w-50 "
+            className='w-50 '
           />
         </div>
         <NotesDetailsPopupComponent

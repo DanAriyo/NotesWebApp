@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { PopupComponent } from "../../../components/PopupComponent";
-import { InputTextComponent } from "../../../components/InputTextComponent";
-import { InputTextAreaComponent } from "../../../components/InputTextAreaComponent";
-import { ButtonComponent } from "../../../components/ButtonComponent";
+import { PopupComponent } from "../../../components/popup-component/PopupComponent";
+import { InputTextComponent } from "../../../components/input-text-component/InputTextComponent";
+import { InputTextAreaComponent } from "../../../components/input-textarea-component/InputTextAreaComponent";
+import { ButtonComponent } from "../../../components/button-component/ButtonComponent";
 import { Note } from "../../../data/Database";
 
 type NoteDetailsPopupProps = {

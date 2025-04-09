@@ -1,5 +1,5 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import { ButtonComponent } from "./ButtonComponent";
+import { ButtonComponent } from "./button-component/ButtonComponent";
 
 type ModalProps = {
   isOpen: boolean;
