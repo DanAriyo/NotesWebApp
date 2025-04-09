@@ -9,6 +9,7 @@ import InputSearchComponent from "../../components/InputSearchComponent";
 function NotesPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [notes2, setNotes2] = useState<Note[]>([]);
+  const [searchString, setSearchString] = useState("");
 
   const createEmptyNote = (): Note => {
     return {
@@ -26,6 +27,19 @@ function NotesPage() {
       setNotes2(allNotes);
     }
   }, [allNotes]);
+
+  useEffect(() => {
+    if (searchString.trim() === "") {
+      handleNotes(allNotes);
+    } else {
+      const notes3 = notes2.filter(
+        (note) =>
+          note.title.toLowerCase().includes(searchString.toLowerCase()) ||
+          note.description.toLowerCase().includes(searchString.toLowerCase())
+      );
+      handleNotes(notes2.length > 0 ? notes3 : notes2);
+    }
+  }, [searchString]);
 
   const handleNotes = (notes3: Note[]) => {
     setNotes2(notes3);
@@ -87,9 +101,8 @@ function NotesPage() {
     <>
       <div className='flex flex-col justify-center mx-auto'>
         <InputSearchComponent
-          notes={notes2}
-          handleNotes={handleNotes}
-          allNotes={allNotes}
+          setSearchString={setSearchString}
+          value={searchString}
         />
         <div className='flex flex-col mx-auto m-1.5 shadow-2xl'>
           <ButtonComponent
@@ -107,7 +120,7 @@ function NotesPage() {
           item={selectedNote}
           onDelete={deleteNote}
         />
-        <NoteListItemComponent notes={allNotes} toggle={toggle} />
+        <NoteListItemComponent notes={notes2} toggle={toggle} />
       </div>
     </>
   );
