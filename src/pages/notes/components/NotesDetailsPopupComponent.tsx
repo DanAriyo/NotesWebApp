@@ -70,6 +70,7 @@ const NotesDetailsPopupComponent = ({
               title='Salva'
               onClick={() => {
                 onSave?.(title, description, item?.id || null);
+                onClosed?.();
               }}
               disabled={item.id == 0 ? !isEditable : isEditable}
             />
