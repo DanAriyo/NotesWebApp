@@ -66,3 +66,46 @@ body,
 .box:hover .hidden-on-hover {
     opacity: 1;
 }
+
+/*utility classes for displaying elements in the ladle env*/
+.justify-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.padding {
+    padding: 3px;
+}
+
+.fixed-inset-0-bg-black-30 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.flex-col-bg-white-m-5-p-5-rounded-3xl {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 1.25rem;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+}
+
+.custom-center-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    width: 100vw;
+
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
