@@ -39,6 +39,9 @@ const NotesDetailsPopupComponent = ({
             onClosed?.();
             setIsEditable(true);
           }}
+          dialogBackdropClassName='fixed inset-0 bg-black/30'
+          dialogPanelClassName='flex-col bg-white m-5 p-5 rounded-3xl'
+          divClassName='fixed inset-0 flex w-screen items-center justify-center p-4'
         >
           <form className='flex flex-col'>
             <InputTextComponent
@@ -86,6 +89,9 @@ const NotesDetailsPopupComponent = ({
                 <PopupComponent
                   isOpen={deletePopupIsOpen}
                   onClosed={() => setDeletePopupIsOpen(false)}
+                  dialogBackdropClassName='fixed inset-0 bg-black/30'
+                  dialogPanelClassName='flex-col bg-white m-5 p-5 rounded-3xl'
+                  divClassName='fixed inset-0 flex w-screen items-center justify-center p-4'
                 >
                   <p className='text-center text-2xl p-7'>
                     Sei sicuro di voler eliminare la nota
