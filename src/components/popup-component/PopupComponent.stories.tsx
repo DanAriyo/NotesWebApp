@@ -12,7 +12,11 @@ export const Popup: Story = () => {
 
   return (
     <div className='box'>
-      <ButtonComponent title='clickMe' onClick={() => setIsPopupOpen(true)} />
+      <ButtonComponent
+        title='clickMe'
+        onClick={() => setIsPopupOpen(true)}
+        className='hidden-on-hover'
+      />
       <PopupComponent
         isOpen={isPopupOpen}
         onClosed={() => setIsPopupOpen(false)}

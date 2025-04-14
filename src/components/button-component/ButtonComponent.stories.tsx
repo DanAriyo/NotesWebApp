@@ -11,6 +11,6 @@ export const DisabledButton = () => (
 
 export const InvisibleButton = () => (
   <div className='box'>
-    <ButtonComponent title='InsivibleClickMe' className='hidden-on-hover ' />
+    <ButtonComponent title='InsivibleClickMe' className='hidden-on-hover' />
   </div>
 );
