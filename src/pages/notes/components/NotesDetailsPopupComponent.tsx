@@ -64,6 +64,8 @@ const NotesDetailsPopupComponent = ({
             {item.id != 0 && (
               <ButtonComponent
                 title='Modifica'
+                variant='btn-secondary'
+                size='btn-md'
                 onClick={() => setIsEditable(false)}
                 disabled={item.id == 0 ? isEditable : !isEditable}
               />
@@ -71,6 +73,8 @@ const NotesDetailsPopupComponent = ({
 
             <ButtonComponent
               title='Salva'
+              variant='btn-secondary'
+              size='btn-md'
               onClick={() => {
                 onSave?.(title, description, item?.id || null);
                 onClosed?.();
@@ -81,6 +85,8 @@ const NotesDetailsPopupComponent = ({
             {item != null && item.id != 0 && (
               <ButtonComponent
                 title='Elimina'
+                variant='btn-secondary'
+                size='btn-md'
                 onClick={() => {
                   setDeletePopupIsOpen(true);
                   return true;
@@ -100,7 +106,8 @@ const NotesDetailsPopupComponent = ({
                     <ButtonComponent
                       title='No'
                       onClick={() => setDeletePopupIsOpen(false)}
-                      variant='p-1.5 m-1.5'
+                      variant='btn-primary'
+                      size='btn-md'
                     />
                     <ButtonComponent
                       title='Si'
@@ -110,7 +117,8 @@ const NotesDetailsPopupComponent = ({
                         onClosed?.();
                         setIsEditable(true);
                       }}
-                      variant='p-1.5 m-1.5'
+                      variant='btn-primary'
+                      size='btn-md'
                     />
                   </div>
                 </PopupComponent>
