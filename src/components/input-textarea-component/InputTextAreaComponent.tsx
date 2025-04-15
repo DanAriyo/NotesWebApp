@@ -6,7 +6,7 @@ type InputTextAreaProps = {
     value: string
   ) => void | ChangeEventHandler<HTMLTextAreaElement>;
   isEditable?: boolean;
-  className?: string;
+  size?: string;
   placeHolder?: boolean;
 };
 
@@ -14,14 +14,12 @@ export function InputTextAreaComponent({
   value,
   valueChanged,
   isEditable,
-  className,
+  size,
   placeHolder,
 }: InputTextAreaProps) {
   return (
     <textarea
-      className={className}
-      cols={30}
-      rows={10}
+      className={size}
       value={value}
       onChange={(event) => valueChanged?.(event.target.value)}
       name='DescriptionArea'

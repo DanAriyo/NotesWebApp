@@ -3,7 +3,7 @@ type InputTextProps = {
   placeholder?: boolean;
   valueChanged?: (value: string) => void;
   isEditable?: boolean;
-  className?: string;
+  size?: string;
 };
 
 export const InputTextComponent = ({
@@ -11,14 +11,14 @@ export const InputTextComponent = ({
   valueChanged,
   isEditable,
   placeholder,
-  className,
+  size,
 }: InputTextProps) => {
   return (
     <input
       type='text'
       value={value}
       onChange={(event) => valueChanged?.(event.target.value)}
-      className={className}
+      className={size}
       readOnly={!isEditable}
       placeholder={placeholder ? "Titolo" : ""}
     />
