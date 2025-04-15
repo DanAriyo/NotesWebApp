@@ -98,7 +98,8 @@ function NotesPage() {
             onClick={() => {
               showNotePopup(createEmptyNote());
             }}
-            className='w-50 '
+            variant='btn-secondary'
+            size='btn-md'
           />
         </div>
         <NotesDetailsPopupComponent

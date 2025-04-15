@@ -19,14 +19,13 @@ button:disabled {
 }
 
 button {
-    background-color: #cacaca90;
     border: 4px;
-    padding: 10px;
     border-radius: 20px;
+    color: white;
 }
 
 button:hover {
-    background-color: #bfbebefe;
+    background-color: #6b6b6bfe;
 }
 
 html,
@@ -71,4 +70,27 @@ body,
 .justify-end {
     display: flex;
     justify-content: flex-end;
+}
+
+.btn-primary {
+    background-color: rgb(27, 17, 230);
+}
+
+.btn-secondary {
+    background-color: rgb(179, 176, 176);
+}
+
+.btn-lg {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem
+}
+
+.btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 1rem
+}
+
+.btn-md {
+    font-size: 1rem;
+    padding: 0.50rem 1.25rem
 }

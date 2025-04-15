@@ -18,7 +18,8 @@ function NoteListItemComponent({ notes, noteClicked }: NoteListItemProps) {
               <ButtonComponent
                 title='Visualizza'
                 onClick={() => noteClicked?.(note)}
-                className=' w-25 hidden-on-hover '
+                variant='btn-secondary hidden-on-hover'
+                size='btn-md'
               />
             </div>
           </div>

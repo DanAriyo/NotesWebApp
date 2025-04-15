@@ -100,7 +100,7 @@ const NotesDetailsPopupComponent = ({
                     <ButtonComponent
                       title='No'
                       onClick={() => setDeletePopupIsOpen(false)}
-                      className='p-1.5 m-1.5'
+                      variant='p-1.5 m-1.5'
                     />
                     <ButtonComponent
                       title='Si'
@@ -110,7 +110,7 @@ const NotesDetailsPopupComponent = ({
                         onClosed?.();
                         setIsEditable(true);
                       }}
-                      className='p-1.5 m-1.5'
+                      variant='p-1.5 m-1.5'
                     />
                   </div>
                 </PopupComponent>
