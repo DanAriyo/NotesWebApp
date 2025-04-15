@@ -11,7 +11,7 @@ export const Popup: Story = () => {
       <ButtonComponent
         title='clickMe'
         onClick={() => setIsPopupOpen(true)}
-        className='hidden-on-hover'
+        variant='hidden-on-hover'
       />
       <PopupComponent
         isOpen={isPopupOpen}
@@ -34,7 +34,7 @@ export const DeletePopup: Story = () => {
       <ButtonComponent
         title='clickMe'
         onClick={() => setIsPopupOpen(true)}
-        className='hidden-on-hover'
+        variant='hidden-on-hover'
       />
       <PopupComponent
         isOpen={isPopupOpen}
@@ -50,14 +50,14 @@ export const DeletePopup: Story = () => {
           <ButtonComponent
             title='No'
             onClick={() => setIsPopupOpen(false)}
-            className='p-1.5 m-1.5'
+            variant='p-1.5 m-1.5'
           />
           <ButtonComponent
             title='Si'
             onClick={() => {
               setIsPopupOpen(false);
             }}
-            className='p-1.5 m-1.5'
+            variant='p-1.5 m-1.5'
           />
         </div>
       </PopupComponent>
