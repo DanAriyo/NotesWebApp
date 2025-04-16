@@ -4,6 +4,7 @@ import { InputTextComponent } from "../../../components/input-text-component/Inp
 import { InputTextAreaComponent } from "../../../components/input-textarea-component/InputTextAreaComponent";
 import { ButtonComponent } from "../../../components/button-component/ButtonComponent";
 import { Note } from "../../../data/Database";
+import { LuPencilLine } from "react-icons/lu";
 
 type NoteDetailsPopupProps = {
   isOpen: boolean;
@@ -59,18 +60,19 @@ const NotesDetailsPopupComponent = ({
               size='textarea-lg'
             ></InputTextAreaComponent>
           </form>
-
-          <div className='flex justify-between'>
-            {item.id != 0 && (
+          {item.id != 0 && (
+            <div className='flex flex-row border-2 rounded-2xl border-gray-300 m-2 p-2'>
+              <InputTextComponent value='Modifica la Nota' size='text-center' />
               <ButtonComponent
-                title='Modifica'
+                icon={<LuPencilLine size='1.5rem' />}
                 variant='btn-secondary'
                 size='btn-md'
                 onClick={() => setIsEditable(false)}
                 disabled={item.id == 0 ? isEditable : !isEditable}
               />
-            )}
-
+            </div>
+          )}
+          <div className='flex justify-between'>
             <ButtonComponent
               title='Salva'
               variant='btn-secondary'
