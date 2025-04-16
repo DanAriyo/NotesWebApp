@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 button:disabled {
     background-color: #ccc;
     color: #777;
@@ -7,12 +9,6 @@ button:disabled {
     opacity: 0.5;
 }
 
-#root {
-    background-color: white;
-    padding: 1rem;
-    flex-direction: column;
-    justify-content: center;
-}
 
 button {
 
@@ -95,7 +91,7 @@ body,
 }
 
 .textarea-sm {
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     padding: 0.5rem;
     min-height: 2.5rem;
     border-radius: 1rem;
@@ -115,13 +111,12 @@ body,
 }
 
 .textarea-lg {
-    font-size: 1.125rem;
+    font-size: 1.250rem;
     padding: 1rem;
     min-height: 12rem;
     border-radius: 1rem;
     border-width: 2px;
     border-color: rgb(221, 217, 217);
     margin: 10px;
-    /*resize: none;
-    overflow: hidden;*/
+
 }
