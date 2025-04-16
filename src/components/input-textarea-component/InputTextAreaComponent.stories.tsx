@@ -2,7 +2,7 @@ import { Story } from "@ladle/react";
 import { InputTextAreaComponent } from "./InputTextAreaComponent";
 import { useState } from "react";
 
-export const InputTextArea: Story = () => {
+export const MediumInputTextArea: Story = () => {
   const [value, valueChanged] = useState("");
   return (
     <InputTextAreaComponent
@@ -10,7 +10,46 @@ export const InputTextArea: Story = () => {
       isEditable={true}
       valueChanged={valueChanged}
       placeHolder={true}
-      size='p-3 border-2 m-1'
+      size='textarea-md'
+    />
+  );
+};
+
+export const SmallInputTextArea: Story = () => {
+  const [value, valueChanged] = useState("");
+  return (
+    <InputTextAreaComponent
+      value={value}
+      isEditable={true}
+      valueChanged={valueChanged}
+      placeHolder={true}
+      size='textarea-sm'
+    />
+  );
+};
+
+export const LargeInputTextArea: Story = () => {
+  const [value, valueChanged] = useState("");
+  return (
+    <InputTextAreaComponent
+      value={value}
+      isEditable={true}
+      valueChanged={valueChanged}
+      placeHolder={true}
+      size='textarea-lg'
+    />
+  );
+};
+
+export const DisabledInputTextArea: Story = () => {
+  const [value, valueChanged] = useState("");
+  return (
+    <InputTextAreaComponent
+      value={value}
+      isEditable={false}
+      valueChanged={valueChanged}
+      placeHolder={true}
+      size='textarea-md'
     />
   );
 };
