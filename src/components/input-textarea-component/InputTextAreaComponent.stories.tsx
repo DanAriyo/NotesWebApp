@@ -10,7 +10,7 @@ export const InputTextArea: Story = () => {
       isEditable={true}
       valueChanged={valueChanged}
       placeHolder={true}
-      className='p-3 border-2 m-1'
+      size='p-3 border-2 m-1'
     />
   );
 };
