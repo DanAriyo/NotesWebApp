@@ -1,7 +1,6 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { ButtonComponent } from "../button-component/ButtonComponent";
-import { TiDelete } from "react-icons/ti";
-import { TiDeleteOutline } from "react-icons/ti";
+import { GoX } from "react-icons/go";
 type ModalProps = {
   isOpen: boolean;
   onClosed?: () => void;
@@ -37,8 +36,8 @@ export function PopupComponent({
             <div className={dialogPanelClassName}>
               <div className='flex justify-end mr-4'>
                 <ButtonComponent
-                  icon={<TiDeleteOutline size='2rem' />}
-                  variant='btn-secondary'
+                  icon={<GoX size='2rem' color='red' />}
+                  variant=''
                   size=''
                   onClick={() => onClosed?.()}
                 ></ButtonComponent>
