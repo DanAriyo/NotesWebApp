@@ -12,6 +12,7 @@ type NoteDetailsPopupProps = {
   item: Note;
   onSave?: (title: string, description: string, id: null | number) => void;
   onDelete?: (id: number) => void;
+  icon?: React.ReactNode;
 };
 
 const NotesDetailsPopupComponent = ({
@@ -50,7 +51,7 @@ const NotesDetailsPopupComponent = ({
               valueChanged={setTitle}
               isEditable={item.id == 0 ? isEditable : !isEditable}
               placeholder={item.id == 0 ? true : false}
-              size='textarea-sm font-semibold'
+              size='textarea-sm !text-lg font-semibold'
             ></InputTextComponent>
             <InputTextAreaComponent
               value={description}
@@ -64,18 +65,18 @@ const NotesDetailsPopupComponent = ({
             <div className='flex flex-row border-2 rounded-2xl border-gray-300 m-2 p-2'>
               <InputTextComponent value='Modifica la Nota' size='text-center' />
               <ButtonComponent
-                icon={<LuPencilLine size='1.5rem' />}
-                variant='btn-secondary'
+                icon={<LuPencilLine size='1.5rem' color='gray' />}
+                variant=''
                 size='btn-md'
                 onClick={() => setIsEditable(false)}
                 disabled={item.id == 0 ? isEditable : !isEditable}
               />
             </div>
           )}
-          <div className='flex justify-between'>
+          <div className='flex justify-between '>
             <ButtonComponent
               title='Salva'
-              variant='btn-secondary'
+              variant='btn-secondary w-full'
               size='btn-md'
               onClick={() => {
                 onSave?.(title, description, item?.id || null);
@@ -87,7 +88,7 @@ const NotesDetailsPopupComponent = ({
             {item != null && item.id != 0 && (
               <ButtonComponent
                 title='Elimina'
-                variant='btn-secondary'
+                variant='btn-secondary w-full'
                 size='btn-md'
                 onClick={() => {
                   setDeletePopupIsOpen(true);
@@ -108,7 +109,7 @@ const NotesDetailsPopupComponent = ({
                     <ButtonComponent
                       title='No'
                       onClick={() => setDeletePopupIsOpen(false)}
-                      variant='btn-primary'
+                      variant='btn-secondary w-full'
                       size='btn-md'
                     />
                     <ButtonComponent
@@ -119,7 +120,7 @@ const NotesDetailsPopupComponent = ({
                         onClosed?.();
                         setIsEditable(true);
                       }}
-                      variant='btn-primary'
+                      variant='btn-secondary w-full'
                       size='btn-md'
                     />
                   </div>
