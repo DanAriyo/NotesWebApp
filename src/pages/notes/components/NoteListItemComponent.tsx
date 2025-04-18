@@ -1,4 +1,3 @@
-import { ButtonComponent } from "../../../components/button-component/ButtonComponent";
 import { Note } from "../../../data/Database";
 
 type NoteListItemProps = {
