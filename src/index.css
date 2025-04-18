@@ -31,6 +31,14 @@ body,
     color: black;
 }
 
+
+textarea {
+    resize: none;
+    /* Impedisce il ridimensionamento manuale della textarea */
+    overflow: hidden;
+    /* Nasconde la scrollbar */
+}
+
 .defaultNote {
     display: inline-flex;
     flex-direction: row;
