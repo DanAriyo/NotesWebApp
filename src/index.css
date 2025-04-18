@@ -18,6 +18,12 @@ button:hover {
     background-color: #6b6b6bfe;
 }
 
+.popup-bg-dark {
+    background-color: rgb(43, 46, 49);
+}
+
+/*rgb(43, 46, 49)
+rgb(44, 47, 49)*/
 html,
 body,
 #root {
@@ -44,8 +50,10 @@ body,
     border-color: #D1D5DB;
     padding: 3px;
     border-radius: 1rem;
-    width: 350px;
-    max-width: max-content;
+    width: 200px;
+    height: 150px;
+    min-width: max-content;
+    min-height: max-content;
 }
 
 .hidden-on-hover {
