@@ -7,12 +7,10 @@ export const Popup: Story = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
-    <div className='box'>
-      <ButtonComponent
-        title='clickMe'
-        onClick={() => setIsPopupOpen(true)}
-        variant='hidden-on-hover'
-      />
+    <div
+      className='box cursor-pointer hover:shadow-lg hover:bg-gray-100'
+      onClick={() => setIsPopupOpen(true)}
+    >
       <PopupComponent
         isOpen={isPopupOpen}
         onClosed={() => setIsPopupOpen(false)}
@@ -30,12 +28,10 @@ export const DeletePopup: Story = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
-    <div className='box'>
-      <ButtonComponent
-        title='clickMe'
-        onClick={() => setIsPopupOpen(true)}
-        variant='hidden-on-hover'
-      />
+    <div
+      className='box cursor-pointer hover:shadow-lg hover:bg-gray-100'
+      onClick={() => setIsPopupOpen(true)}
+    >
       <PopupComponent
         isOpen={isPopupOpen}
         onClosed={() => setIsPopupOpen(false)}
