@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 button:disabled {
     background-color: #ccc;
     color: #777;
@@ -24,6 +22,7 @@ html,
 body,
 #root {
     min-height: 100vh;
+    color: black;
 }
 
 .defaultNote {
@@ -65,11 +64,24 @@ body,
 }
 
 .btn-primary {
-    background-color: rgb(27, 17, 230);
+    background-color: rgb(10, 159, 87);
 }
 
 .btn-secondary {
     background-color: rgb(179, 176, 176);
+}
+
+.btn-danger {
+    background-color: rgb(185, 13, 13);
+
+}
+
+.btn-danger:hover {
+    background-color: rgb(136, 9, 9);
+}
+
+.btn-primary:hover {
+    background-color: rgb(7, 124, 67);
 }
 
 .btn-lg {
