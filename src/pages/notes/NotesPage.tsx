@@ -88,7 +88,7 @@ function NotesPage() {
 
   return (
     <>
-      <div className='flex flex-col items-center mx-auto'>
+      <div className='flex flex-col items-center mx-auto bg-white dark:bg-slate-900 text-black dark:text-white min-h-screen'>
         <InputSearchComponent
           setSearchString={setSearchString}
           value={searchString}
