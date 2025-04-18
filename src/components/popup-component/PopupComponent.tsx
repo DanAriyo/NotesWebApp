@@ -36,7 +36,7 @@ export function PopupComponent({
             <div className={dialogPanelClassName}>
               <div className='flex justify-end mr-4'>
                 <ButtonComponent
-                  icon={<GoX size='2rem' color='red' />}
+                  icon={<GoX size='2rem' />}
                   variant=''
                   size=''
                   onClick={() => onClosed?.()}
