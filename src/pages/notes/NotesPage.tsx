@@ -6,7 +6,7 @@ import InputSearchComponent from "../../components/input-search-component/InputS
 import { db, Note } from "../../data/Database";
 import NoteListItemComponent from "./components/NoteListItemComponent";
 import NotesDetailsPopupComponent from "./components/NotesDetailsPopupComponent";
-import { LuPencilLine } from "react-icons/lu";
+import { IoSearch } from "react-icons/io5";
 
 const createEmptyNote = (): Note => {
   return {
@@ -93,7 +93,7 @@ function NotesPage() {
           setSearchString={setSearchString}
           value={searchString}
           size='textarea-sm w-100 !pl-10'
-          icon={<LuPencilLine size='1.5rem' />}
+          icon={<IoSearch size='1.5rem' />}
         />
         <div className='flex flex-col mx-auto m-1.5 shadow-2xl'>
           <ButtonComponent
