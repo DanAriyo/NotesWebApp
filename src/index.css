@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/*@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));*/
 button:disabled {
     background-color: #ccc;
     color: #777;
@@ -56,10 +57,21 @@ textarea {
     border-color: #D1D5DB;
     padding: 3px;
     border-radius: 1rem;
-    width: 200px;
-    height: 150px;
+    width: 30%;
+    height: 30%;
     min-width: fit-content;
     min-height: max-content;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .box {
+        min-width: 40%;
+        align-items: center;
+    }
+
+    .defaultNote {
+        width: 100%;
+    }
 }
 
 .hidden-on-hover {
@@ -149,5 +161,5 @@ textarea {
 }
 
 .btn-icon:hover {
-    background-color: transparent;
+    background-color: rgb(203, 200, 200);
 }
