@@ -58,7 +58,7 @@ textarea {
     border-radius: 1rem;
     width: 200px;
     height: 150px;
-    min-width: max-content;
+    min-width: fit-content;
     min-height: max-content;
 }
 
@@ -124,6 +124,7 @@ textarea {
     border-color: rgb(221, 217, 217);
     border-width: 2px;
     margin: 10px;
+    max-width: fit-content;
 }
 
 .textarea-md {
@@ -145,4 +146,8 @@ textarea {
     border-color: rgb(221, 217, 217);
     margin: 10px;
 
+}
+
+.btn-icon:hover {
+    background-color: transparent;
 }
