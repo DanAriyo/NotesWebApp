@@ -18,7 +18,7 @@ export const Popup: Story = () => {
         dialogPanelClassName='flex-col bg-white m-5 p-5 rounded-3xl'
         divClassName='fixed inset-0 flex w-screen items-center justify-center p-4'
       >
-        <p>Hi name's Daniel</p>
+        <p>Hi this is a generic Popup</p>
       </PopupComponent>
     </div>
   );

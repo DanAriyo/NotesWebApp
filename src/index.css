@@ -34,9 +34,7 @@ body,
 
 textarea {
     resize: none;
-    /* Impedisce il ridimensionamento manuale della textarea */
     overflow: hidden;
-    /* Nasconde la scrollbar */
 }
 
 .defaultNote {
