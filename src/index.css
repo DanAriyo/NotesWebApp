@@ -117,7 +117,7 @@ textarea {
 }
 
 .textarea-sm {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     padding: 0.5rem;
     min-height: 2.5rem;
     border-radius: 1rem;
@@ -137,7 +137,7 @@ textarea {
 }
 
 .textarea-lg {
-    font-size: 1.250rem;
+    font-size: 1.25rem;
     padding: 1rem;
     min-height: 12rem;
     border-radius: 1rem;
