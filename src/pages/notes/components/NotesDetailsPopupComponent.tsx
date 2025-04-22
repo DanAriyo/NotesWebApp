@@ -112,7 +112,7 @@ const NotesDetailsPopupComponent = ({
                     <ButtonComponent
                       title='No'
                       onClick={() => setDeletePopupIsOpen(false)}
-                      variant='btn-danger !hover:bg-red-400 w-full'
+                      variant='btn-danger w-full'
                       size='btn-md'
                     />
                     <ButtonComponent
