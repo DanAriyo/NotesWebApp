@@ -10,7 +10,7 @@ export const MediumInputTextArea: Story = () => {
       isEditable={true}
       valueChanged={valueChanged}
       placeHolder={true}
-      size='textarea-md'
+      size='border-3 border-gray-200 rounded-2xl p-2 m-2 resize-none overflow-y-hidden text-lg'
     />
   );
 };
@@ -23,7 +23,7 @@ export const SmallInputTextArea: Story = () => {
       isEditable={true}
       valueChanged={valueChanged}
       placeHolder={true}
-      size='textarea-sm'
+      size='border-3 border-gray-200 rounded-2xl p-2 m-2 resize-none overflow-y-hidden text-sm '
     />
   );
 };
@@ -36,7 +36,7 @@ export const LargeInputTextArea: Story = () => {
       isEditable={true}
       valueChanged={valueChanged}
       placeHolder={true}
-      size='textarea-lg'
+      size='border-3 border-gray-200 rounded-2xl p-2 m-2 resize-none overflow-y-hidden text-2xl dark:text-white'
     />
   );
 };
@@ -49,7 +49,7 @@ export const DisabledInputTextArea: Story = () => {
       isEditable={false}
       valueChanged={valueChanged}
       placeHolder={true}
-      size='textarea-md'
+      size='border-3 border-gray-200 rounded-2xl p-2 m-2 resize-none overflow-y-hidden'
     />
   );
 };

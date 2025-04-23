@@ -8,7 +8,7 @@ export const Popup: Story = () => {
 
   return (
     <div
-      className='box cursor-pointer hover:shadow-lg hover:bg-gray-100'
+      className='border-3 border-gray-200 rounded-2xl m-4 cursor-pointer  min-w-[20%] max-w-[20%] min-h-[30%] max-h-[30%] hover:shadow-lg hover:bg-gray-100  transition-all duration-200 '
       onClick={() => setIsPopupOpen(true)}
     >
       <PopupComponent
@@ -29,7 +29,7 @@ export const DeletePopup: Story = () => {
 
   return (
     <div
-      className='box cursor-pointer hover:shadow-lg hover:bg-gray-100'
+      className='border-3 border-gray-200 rounded-2xl m-4 cursor-pointer  min-w-[20%] max-w-[20%] min-h-[30%] max-h-[30%] hover:shadow-lg hover:bg-gray-100  transition-all duration-200'
       onClick={() => setIsPopupOpen(true)}
     >
       <PopupComponent
@@ -46,14 +46,16 @@ export const DeletePopup: Story = () => {
           <ButtonComponent
             title='No'
             onClick={() => setIsPopupOpen(false)}
-            variant='p-1.5 m-1.5'
+            variant='btn-danger w-full'
+            size='text-lg m-2 p-1'
           />
           <ButtonComponent
             title='Si'
             onClick={() => {
               setIsPopupOpen(false);
             }}
-            variant='p-1.5 m-1.5'
+            variant='btn-primary w-full'
+            size='text-lg m-2 p-1'
           />
         </div>
       </PopupComponent>

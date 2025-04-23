@@ -9,7 +9,7 @@ export const LargeInputSearch: Story = () => {
     <InputSearchComponent
       setSearchString={setInputValue}
       value={inputValue}
-      size='textarea-lg '
+      size='border-3 rounded-2xl w-full p-2 text-xl '
     />
   );
 };
@@ -20,7 +20,7 @@ export const MediumInputSearch: Story = () => {
     <InputSearchComponent
       setSearchString={setInputValue}
       value={inputValue}
-      size='textarea-md '
+      size='border-3 rounded-2xl w-full p-2 text-lg '
     />
   );
 };
@@ -31,7 +31,7 @@ export const SmallInputSearch: Story = () => {
     <InputSearchComponent
       setSearchString={setInputValue}
       value={inputValue}
-      size='textarea-sm '
+      size='border-3 rounded-2xl w-full p-1 text-sm '
     />
   );
 };
@@ -42,7 +42,7 @@ export const IconInputSearch: Story = () => {
     <InputSearchComponent
       setSearchString={setInputValue}
       value={inputValue}
-      size='textarea-sm w-100 !pl-10 '
+      size='border-3 rounded-2xl w-full p-2 pl-7 text-xl'
       icon={<LuPencilLine size='1.5rem' />}
     />
   );
@@ -54,7 +54,7 @@ export const DisabledInputSearch: Story = () => {
     <InputSearchComponent
       setSearchString={setInputValue}
       value={inputValue}
-      size='textarea-md '
+      size='border-3 rounded-2xl w-full p-2 text-xl'
       disabled={true}
     />
   );

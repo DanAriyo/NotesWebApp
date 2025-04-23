@@ -3,30 +3,38 @@ import { ButtonComponent } from "./ButtonComponent";
 import { TiDeleteOutline } from "react-icons/ti";
 
 export const DisabledButton = () => (
-  <ButtonComponent title='Cant ClickMe' disabled size='btn-md' />
+  <ButtonComponent title='Cant ClickMe' disabled size='text-lg m-2 p-2' />
 );
 
 export const PrimaryButton = () => (
-  <ButtonComponent title='PrimaryClickMe' variant='btn-primary' size='btn-md' />
+  <ButtonComponent
+    title='PrimaryClickMe'
+    variant='btn-primary'
+    size='text-lg m-2 p-2'
+  />
 );
 
 export const SecondaryButton = () => (
   <ButtonComponent
     title='SecondaryClickMe'
     variant='btn-secondary'
-    size='btn-md'
+    size='text-lg m-2 p-2'
   />
 );
 
 export const DangerButton = () => (
-  <ButtonComponent title='DangerClickMe' variant='btn-danger' size='btn-md' />
+  <ButtonComponent
+    title='DangerClickMe'
+    variant='btn-danger'
+    size='text-lg m-2 p-2'
+  />
 );
 
 export const LargeButton = () => (
   <ButtonComponent
     title='PrimaryClickMe'
     variant='btn-secondary'
-    size='btn-lg'
+    size='text-xl m-2 p-2'
   />
 );
 
@@ -34,7 +42,7 @@ export const MediumButton = () => (
   <ButtonComponent
     title='PrimaryClickMe'
     variant='btn-secondary'
-    size='btn-md'
+    size='text-lg m-2 p-2'
   />
 );
 
@@ -42,7 +50,7 @@ export const SmallButton = () => (
   <ButtonComponent
     title='PrimaryClickMe'
     variant='btn-secondary'
-    size='btn-sm'
+    size='text-sm m-2 p-2'
   />
 );
 
