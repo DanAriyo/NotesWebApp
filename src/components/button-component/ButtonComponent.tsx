@@ -7,7 +7,7 @@ type ButtonProps = {
   key?: number;
   disabled?: boolean;
   variant?: string;
-  size?: "btn-sm" | "btn-md" | "btn-lg" | "";
+  size?: string;
   icon?: React.ReactNode;
 };
 

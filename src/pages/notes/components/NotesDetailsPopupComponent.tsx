@@ -51,18 +51,18 @@ const NotesDetailsPopupComponent = ({
               valueChanged={setTitle}
               isEditable={item.id == 0 ? isEditable : !isEditable}
               placeholder={item.id == 0 ? true : false}
-              size='textarea-sm !text-lg font-semibold dark:bg-gray-600'
+              size='border-3 border-gray-200 rounded-2xl p-1 m-2 text-lg font-semibold dark:bg-gray-600'
             ></InputTextComponent>
             <InputTextAreaComponent
               value={description}
               valueChanged={setDescription}
               isEditable={item.id == 0 ? isEditable : !isEditable}
               placeHolder={item.id == 0 ? true : false}
-              size='textarea-lg dark:bg-gray-600'
+              size='border-3 border-gray-200 rounded-2xl p-2 m-2 dark:bg-gray-600 resize-none overflow-y-hidden'
             ></InputTextAreaComponent>
           </form>
           {item.id != 0 && (
-            <div className='flex flex-row border-2 rounded-2xl border-gray-300 m-2 p-2 dark:bg-gray-600'>
+            <div className='flex flex-row border-3 rounded-2xl border-gray-200 m-2 p-2 dark:bg-gray-600'>
               <InputTextComponent
                 value='Modifica la Nota'
                 size='text-center '
@@ -80,7 +80,7 @@ const NotesDetailsPopupComponent = ({
             <ButtonComponent
               title='Salva'
               variant='btn-primary w-full'
-              size='btn-md'
+              size='text-lg m-2 p-1'
               onClick={() => {
                 onSave?.(title, description, item?.id || null);
                 onClosed?.();
@@ -92,7 +92,7 @@ const NotesDetailsPopupComponent = ({
               <ButtonComponent
                 title='Elimina'
                 variant='btn-danger w-full'
-                size='btn-md'
+                size='text-lg m-2 p-1'
                 onClick={() => {
                   setDeletePopupIsOpen(true);
                   return true;
@@ -113,7 +113,7 @@ const NotesDetailsPopupComponent = ({
                       title='No'
                       onClick={() => setDeletePopupIsOpen(false)}
                       variant='btn-danger w-full'
-                      size='btn-md'
+                      size='text-lg m-2 p-1'
                     />
                     <ButtonComponent
                       title='Si'
@@ -124,7 +124,7 @@ const NotesDetailsPopupComponent = ({
                         setIsEditable(true);
                       }}
                       variant='btn-primary w-full'
-                      size='btn-md'
+                      size='text-lg m-2 p-1'
                     />
                   </div>
                 </PopupComponent>
