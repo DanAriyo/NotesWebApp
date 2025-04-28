@@ -92,10 +92,10 @@ function NotesPage() {
         <InputSearchComponent
           setSearchString={setSearchString}
           value={searchString}
-          size=' border-3 rounded-2xl w-full p-2 pl-7 text-xl'
+          size=' border-3 border-gray-200 rounded-2xl w-full p-2 pl-7 text-xl'
           icon={<IoSearch size='1.5rem' />}
         />
-        <div className='flex flex-col mx-auto mb-5 shadow-2xl'>
+        <div className='flex flex-col mx-auto m-3 shadow-2xl'>
           <ButtonComponent
             title='Crea nuova nota'
             onClick={() => {

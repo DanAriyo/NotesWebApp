@@ -51,7 +51,7 @@ const NotesDetailsPopupComponent = ({
               valueChanged={setTitle}
               isEditable={item.id == 0 ? isEditable : !isEditable}
               placeholder={item.id == 0 ? true : false}
-              size='border-3 border-gray-200 rounded-2xl p-1 m-2 text-lg font-semibold dark:bg-gray-600'
+              size='border-3 border-gray-200 rounded-2xl p-1 m-2 pl-3 text-lg font-semibold dark:bg-gray-600'
             ></InputTextComponent>
             <InputTextAreaComponent
               value={description}
