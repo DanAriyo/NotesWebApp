@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 /*@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));*/
 button:disabled {
     background-color: #ccc;
@@ -14,28 +15,15 @@ button {
 }
 
 button:hover {
-    background-color: #6b6b6bfe;
+    background-color: #bdbcbcfe;
 }
-
-.popup-bg-dark {
-    background-color: rgb(43, 46, 49);
-}
-
-/*rgb(43, 46, 49)
-rgb(44, 47, 49)*/
-
-
-
-
-
-
 
 .btn-primary {
     background-color: rgb(10, 159, 87);
 }
 
 .btn-secondary {
-    background-color: rgb(179, 176, 176);
+    background-color: rgb(166, 166, 167);
 }
 
 .btn-danger {
