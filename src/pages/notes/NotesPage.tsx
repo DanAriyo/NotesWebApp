@@ -1,12 +1,16 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import { useCallback, useMemo, useState } from "react";
+import { SetStateAction, useCallback, useMemo, useState } from "react";
 
 import { ButtonComponent } from "../../components/button-component/ButtonComponent";
+import ChoiceBoxComponent from "../../components/choicebox-component/ChoiceBoxComponent";
 import InputSearchComponent from "../../components/input-search-component/InputSearchComponent";
 import { db, Note } from "../../data/Database";
 import NoteListItemComponent from "./components/NoteListItemComponent";
 import NotesDetailsPopupComponent from "./components/NotesDetailsPopupComponent";
 import { IoSearch } from "react-icons/io5";
+import { BsMoonStars } from "react-icons/bs";
+import { IoIosSunny } from "react-icons/io";
+import { MdMonitor } from "react-icons/md";
 
 const createEmptyNote = (): Note => {
   return {
@@ -20,6 +24,11 @@ function NotesPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [selectedNote, setSelectedNote] = useState<Note>(createEmptyNote());
+  const [selectedTheme, setSelectedTheme] = useState("os");
+
+  const handleChange = (event: { target: { id: SetStateAction<string> } }) => {
+    setSelectedTheme(event.target.id);
+  };
 
   const dbNotes = useLiveQuery(() => db.notes.toArray());
 
@@ -89,13 +98,24 @@ function NotesPage() {
   return (
     <>
       <div className='flex flex-col items-center mx-auto bg-white dark:bg-slate-900 text-black dark:text-white min-h-screen'>
-        <InputSearchComponent
-          setSearchString={setSearchString}
-          value={searchString}
-          size=' border-3 border-gray-200 rounded-2xl w-full p-2 pl-7 text-xl'
-          icon={<IoSearch size='1.5rem' />}
-        />
-        <div className='flex flex-col mx-auto m-3 shadow-2xl'>
+        <div className='flex flex-col md:flex-row items-center w-full'>
+          <InputSearchComponent
+            setSearchString={setSearchString}
+            value={searchString}
+            size=' border-3 border-gray-200 rounded-2xl w-[80%] md:w-[60%] p-2 pl-7 text-xl'
+            icon={<IoSearch size='1.5rem' />}
+          />
+
+          <ChoiceBoxComponent
+            lightModeIcon={<IoIosSunny size='2rem' />}
+            darkModeIcon={<BsMoonStars size='1.5rem' />}
+            osModeIcon={<MdMonitor size='1.5rem' />}
+            size='flex flex-row bg-gray-200 rounded-2xl p-1 mb-2 mr-3 items-center'
+            selectedTheme={selectedTheme}
+            handleChange={handleChange}
+          />
+        </div>
+        <div className='flex flex-col mx-auto m-3'>
           <ButtonComponent
             title='Crea nuova nota'
             onClick={() => {
@@ -122,3 +142,67 @@ function NotesPage() {
 }
 
 export default NotesPage;
+
+{
+  /* <div
+          className='flex flex-row bg-gray-200 rounded-2xl p-1'
+          role='radiogroup'
+        >
+          <label
+            htmlFor='dark'
+            className={`m-1 p-1 cursor-pointer flex items-center rounded-xl ${
+              selectedTheme === "dark" ? "bg-gray-500" : ""
+            }`}
+          >
+            <input
+              type='radio'
+              id='dark'
+              name='theme'
+              checked={selectedTheme === "dark"}
+              onChange={handleChange}
+              className='hidden'
+            />
+            <span>
+              <BsMoonStars size='2rem' />
+            </span>
+          </label>
+
+          <label
+            htmlFor='light'
+            className={`m-1 p-1 cursor-pointer flex items-center rounded-xl ${
+              selectedTheme === "light" ? "bg-gray-500" : ""
+            }`}
+          >
+            <input
+              type='radio'
+              id='light'
+              name='theme'
+              checked={selectedTheme === "light"}
+              onChange={handleChange}
+              className='hidden'
+            />
+            <span>
+              <IoIosSunny size='2rem' />
+            </span>
+          </label>
+
+          <label
+            htmlFor='os'
+            className={`m-1 p-1 cursor-pointer flex items-center rounded-xl ${
+              selectedTheme === "os" ? "bg-gray-500" : ""
+            }`}
+          >
+            <input
+              type='radio'
+              id='os'
+              name='theme'
+              checked={selectedTheme === "os"}
+              onChange={handleChange}
+              className='hidden'
+            />
+            <span>
+              <MdMonitor size='2rem' />
+            </span>
+          </label>
+        </div> */
+}
