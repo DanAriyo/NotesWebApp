@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 
-/*@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));*/
+@custom-variant dark (&:where(.dark, .dark *));
+
 button:disabled {
     background-color: #ccc;
     color: #777;
@@ -11,7 +12,8 @@ button:disabled {
 
 button {
     border-radius: 20px;
-    color: white;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
 }
 
 button:hover {
@@ -23,7 +25,7 @@ button:hover {
 }
 
 .btn-secondary {
-    background-color: rgb(166, 166, 167);
+    background-color: rgb(232, 232, 232);
 }
 
 .btn-danger {
