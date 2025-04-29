@@ -1,5 +1,11 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import { SetStateAction, useCallback, useMemo, useState } from "react";
+import {
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import { ButtonComponent } from "../../components/button-component/ButtonComponent";
 import ChoiceBoxComponent from "../../components/choicebox-component/ChoiceBoxComponent";
@@ -24,7 +30,9 @@ function NotesPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [selectedNote, setSelectedNote] = useState<Note>(createEmptyNote());
-  const [selectedTheme, setSelectedTheme] = useState("os");
+  const [selectedTheme, setSelectedTheme] = useState(
+    localStorage.theme || "os"
+  );
 
   const handleChange = (event: { target: { id: SetStateAction<string> } }) => {
     setSelectedTheme(event.target.id);
@@ -95,6 +103,56 @@ function NotesPage() {
     setSelectedNote(note);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const updateTheme = (theme: string) => {
+      if (theme === "light") {
+        localStorage.theme = "light";
+        document.documentElement.classList.remove("dark");
+      }
+
+      if (theme === "dark") {
+        localStorage.theme = "dark";
+        document.documentElement.classList.add("dark");
+      }
+
+      if (theme === "os") {
+        localStorage.removeItem("theme");
+
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        document.documentElement.classList.toggle("dark", prefersDark);
+      }
+    };
+
+    const handleMediaChange = (e: { matches: any }) => {
+      if (selectedTheme === "os") {
+        const prefersDark = e.matches;
+        document.documentElement.classList.toggle("dark", prefersDark);
+      }
+    };
+
+    updateTheme(selectedTheme);
+
+    if (selectedTheme === "os") {
+      const prefersDarkMediaQuery = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      );
+      prefersDarkMediaQuery.addEventListener("change", handleMediaChange);
+    }
+
+    return () => {
+      if (selectedTheme === "os") {
+        const prefersDarkMediaQuery = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        );
+        prefersDarkMediaQuery.removeEventListener("change", handleMediaChange);
+      }
+    };
+  }, [selectedTheme]);
+
   return (
     <>
       <div className='flex flex-col items-center mx-auto bg-white dark:bg-slate-900 text-black dark:text-white min-h-screen'>
@@ -105,7 +163,6 @@ function NotesPage() {
             size=' border-3 border-gray-200 rounded-2xl w-[80%] md:w-[60%] p-2 pl-7 text-xl'
             icon={<IoSearch size='1.5rem' />}
           />
-
           <ChoiceBoxComponent
             lightModeIcon={<IoIosSunny size='2rem' />}
             darkModeIcon={<BsMoonStars size='1.5rem' />}
