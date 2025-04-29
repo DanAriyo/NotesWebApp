@@ -167,7 +167,7 @@ function NotesPage() {
             lightModeIcon={<IoIosSunny size='2rem' />}
             darkModeIcon={<BsMoonStars size='1.5rem' />}
             osModeIcon={<MdMonitor size='1.5rem' />}
-            size='flex flex-row bg-gray-200 rounded-2xl p-1 mb-2 mr-3 items-center'
+            size='flex flex-row  p-1 mb-2 mr-3 items-center'
             selectedTheme={selectedTheme}
             handleChange={handleChange}
           />
