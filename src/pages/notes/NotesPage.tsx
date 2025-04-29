@@ -178,8 +178,8 @@ function NotesPage() {
             onClick={() => {
               showNotePopup(createEmptyNote());
             }}
-            variant='btn-secondary'
-            size='p-5 text-xl'
+            variant='bg-white dark:bg-slate-900 border-3 border-gray-300 '
+            size='p-5 text-xl dark:!text-white '
           />
         </div>
         <NotesDetailsPopupComponent
