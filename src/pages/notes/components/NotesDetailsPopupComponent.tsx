@@ -79,7 +79,7 @@ const NotesDetailsPopupComponent = ({
           <div className='flex justify-between '>
             <ButtonComponent
               title='Salva'
-              variant='btn-primary w-full'
+              variant='btn-primary w-full !text-white'
               size='text-lg m-2 p-1'
               onClick={() => {
                 onSave?.(title, description, item?.id || null);
@@ -91,7 +91,7 @@ const NotesDetailsPopupComponent = ({
             {item != null && item.id != 0 && (
               <ButtonComponent
                 title='Elimina'
-                variant='btn-danger w-full'
+                variant='btn-danger w-full !text-white'
                 size='text-lg m-2 p-1'
                 onClick={() => {
                   setDeletePopupIsOpen(true);
@@ -112,7 +112,7 @@ const NotesDetailsPopupComponent = ({
                     <ButtonComponent
                       title='No'
                       onClick={() => setDeletePopupIsOpen(false)}
-                      variant='btn-danger w-full'
+                      variant='btn-danger w-full !text-white'
                       size='text-lg m-2 p-1'
                     />
                     <ButtonComponent
@@ -123,7 +123,7 @@ const NotesDetailsPopupComponent = ({
                         onClosed?.();
                         setIsEditable(true);
                       }}
-                      variant='btn-primary w-full'
+                      variant='btn-primary w-full !text-white'
                       size='text-lg m-2 p-1'
                     />
                   </div>
