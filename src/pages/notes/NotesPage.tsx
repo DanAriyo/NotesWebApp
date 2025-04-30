@@ -156,13 +156,7 @@ function NotesPage() {
   return (
     <>
       <div className='flex flex-col items-center mx-auto bg-white dark:bg-slate-900 text-black dark:text-white min-h-screen'>
-        <div className='flex flex-col md:flex-row items-center w-full'>
-          <InputSearchComponent
-            setSearchString={setSearchString}
-            value={searchString}
-            size=' border-3 border-gray-200 rounded-2xl w-[80%] md:w-[60%] p-2 pl-7 text-xl'
-            icon={<IoSearch size='1.5rem' />}
-          />
+        <div className='flex flex-row w-full justify-center md:justify-end'>
           <ChoiceBoxComponent
             lightModeIcon={<IoIosSunny size='2rem' />}
             darkModeIcon={<BsMoonStars size='1.5rem' />}
@@ -170,6 +164,14 @@ function NotesPage() {
             size='flex flex-row  p-1 mb-2 mr-3 items-center'
             selectedTheme={selectedTheme}
             handleChange={handleChange}
+          />
+        </div>
+        <div className='flex flex-col md:flex-row items-center w-full'>
+          <InputSearchComponent
+            setSearchString={setSearchString}
+            value={searchString}
+            size=' border-3 border-gray-200 rounded-2xl w-[80%] md:w-[60%] p-2 pl-10 text-xl'
+            icon={<IoSearch size='1.5rem' />}
           />
         </div>
         <div className='flex flex-col mx-auto m-3'>
