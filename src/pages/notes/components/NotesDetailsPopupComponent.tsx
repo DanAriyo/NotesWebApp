@@ -85,7 +85,11 @@ const NotesDetailsPopupComponent = ({
                 onSave?.(title, description, item?.id || null);
                 onClosed?.();
               }}
-              disabled={item.id == 0 ? !isEditable : isEditable}
+              disabled={
+                item.id == 0 && title.length != 0 && description.length != 0
+                  ? !isEditable
+                  : isEditable
+              }
             />
 
             {item != null && item.id != 0 && (
