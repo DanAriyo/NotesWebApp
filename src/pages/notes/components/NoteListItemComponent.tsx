@@ -21,6 +21,14 @@ function NoteListItemComponent({ notes, noteClicked }: NoteListItemProps) {
             <p className='text-center font-sans  m-1.5'>{note.description}</p>
           </div>
         ))}
+
+        {notes?.length == 0 && (
+          <div className='flex flex-col col-span-3 justify-center '>
+            <h1 className='font-semibold text-3xl'>
+              Non sono presenti note al momento
+            </h1>
+          </div>
+        )}
       </div>
     </>
   );
