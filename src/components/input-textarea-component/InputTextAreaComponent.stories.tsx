@@ -2,54 +2,30 @@ import { Story } from "@ladle/react";
 import { InputTextAreaComponent } from "./InputTextAreaComponent";
 import { useState } from "react";
 
-export const MediumInputTextArea: Story = () => {
+export const InputTextAreaComponents: Story<{
+  isEditable: boolean;
+  variant: string;
+}> = ({ isEditable, variant }) => {
   const [value, valueChanged] = useState("");
+
   return (
     <InputTextAreaComponent
-      value={value}
-      isEditable={true}
       valueChanged={valueChanged}
-      placeHolder={true}
-      size='border-3 border-gray-200 rounded-2xl p-2 m-2 resize-none overflow-y-hidden text-lg'
+      value={value}
+      isEditable={isEditable}
+      size={`border-3 border-gray-200 rounded-2xl p-2 m-2 dark:bg-gray-600 dark:text-white resize-none overflow-y-hidden ${variant}`}
     />
   );
 };
 
-export const SmallInputTextArea: Story = () => {
-  const [value, valueChanged] = useState("");
-  return (
-    <InputTextAreaComponent
-      value={value}
-      isEditable={true}
-      valueChanged={valueChanged}
-      placeHolder={true}
-      size='border-3 border-gray-200 rounded-2xl p-2 m-2 resize-none overflow-y-hidden text-sm '
-    />
-  );
+InputTextAreaComponents.args = {
+  isEditable: true,
 };
 
-export const LargeInputTextArea: Story = () => {
-  const [value, valueChanged] = useState("");
-  return (
-    <InputTextAreaComponent
-      value={value}
-      isEditable={true}
-      valueChanged={valueChanged}
-      placeHolder={true}
-      size='border-3 border-gray-200 rounded-2xl p-2 m-2 resize-none overflow-y-hidden text-2xl dark:text-white'
-    />
-  );
-};
-
-export const DisabledInputTextArea: Story = () => {
-  const [value, valueChanged] = useState("");
-  return (
-    <InputTextAreaComponent
-      value={value}
-      isEditable={false}
-      valueChanged={valueChanged}
-      placeHolder={true}
-      size='border-3 border-gray-200 rounded-2xl p-2 m-2 resize-none overflow-y-hidden'
-    />
-  );
+InputTextAreaComponents.argTypes = {
+  variant: {
+    options: ["text-base", "text-lg", "text-xl"],
+    control: { type: "select" },
+    defaultValue: "text-base",
+  },
 };

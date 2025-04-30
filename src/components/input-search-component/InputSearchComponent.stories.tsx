@@ -3,59 +3,31 @@ import InputSearchComponent from "./InputSearchComponent";
 import { useState } from "react";
 import { LuPencilLine } from "react-icons/lu";
 
-export const LargeInputSearch: Story = () => {
+export const InputSearchComponents: Story<{
+  disabled: boolean;
+  variant: string;
+}> = ({ disabled, variant }) => {
   const [inputValue, setInputValue] = useState("");
-  return (
-    <InputSearchComponent
-      setSearchString={setInputValue}
-      value={inputValue}
-      size='border-3 rounded-2xl w-full p-2 text-xl '
-    />
-  );
-};
 
-export const MediumInputSearch: Story = () => {
-  const [inputValue, setInputValue] = useState("");
   return (
     <InputSearchComponent
       setSearchString={setInputValue}
       value={inputValue}
-      size='border-3 rounded-2xl w-full p-2 text-lg '
-    />
-  );
-};
-
-export const SmallInputSearch: Story = () => {
-  const [inputValue, setInputValue] = useState("");
-  return (
-    <InputSearchComponent
-      setSearchString={setInputValue}
-      value={inputValue}
-      size='border-3 rounded-2xl w-full p-1 text-sm '
-    />
-  );
-};
-
-export const IconInputSearch: Story = () => {
-  const [inputValue, setInputValue] = useState("");
-  return (
-    <InputSearchComponent
-      setSearchString={setInputValue}
-      value={inputValue}
-      size='border-3 rounded-2xl w-full p-2 pl-7 text-xl'
+      disabled={disabled}
+      size={`border-3 border-gray-200 rounded-2xl w-[80%] md:w-[60%] p-2 pl-11 ${variant} dark:text-white`}
       icon={<LuPencilLine size='1.5rem' />}
     />
   );
 };
 
-export const DisabledInputSearch: Story = () => {
-  const [inputValue, setInputValue] = useState("");
-  return (
-    <InputSearchComponent
-      setSearchString={setInputValue}
-      value={inputValue}
-      size='border-3 rounded-2xl w-full p-2 text-xl'
-      disabled={true}
-    />
-  );
+InputSearchComponents.args = {
+  disabled: false,
+};
+
+InputSearchComponents.argTypes = {
+  variant: {
+    options: ["text-base", "text-lg", "text-xl"],
+    control: { type: "select" },
+    defaultValue: "text-base",
+  },
 };

@@ -1,63 +1,51 @@
+import { Story } from "@ladle/react";
 import "../../index.css";
 import { ButtonComponent } from "./ButtonComponent";
-import { TiDeleteOutline } from "react-icons/ti";
+import { GoX } from "react-icons/go";
 
-export const DisabledButton = () => (
-  <ButtonComponent title='Cant ClickMe' disabled size='text-lg m-2 p-2' />
-);
-
-export const PrimaryButton = () => (
+export const ButtonComponents: Story<{
+  disabled: boolean;
+  variant: string;
+  color: string;
+}> = ({ disabled, variant, color: color }) => (
   <ButtonComponent
-    title='PrimaryClickMe'
-    variant='btn-primary'
-    size='text-lg m-2 p-2'
+    disabled={disabled}
+    variant={`!text-white border-3 border-gray-300 p-3 ${variant}`}
+    size={color}
+    title='Click Me'
   />
 );
 
-export const SecondaryButton = () => (
-  <ButtonComponent
-    title='SecondaryClickMe'
-    variant='btn-secondary'
-    size='text-lg m-2 p-2'
-  />
-);
+ButtonComponents.args = {
+  disabled: false,
+};
 
-export const DangerButton = () => (
-  <ButtonComponent
-    title='DangerClickMe'
-    variant='btn-danger'
-    size='text-lg m-2 p-2'
-  />
-);
+ButtonComponents.argTypes = {
+  color: {
+    options: ["btn-primary", "btn-danger"],
+    control: { type: "select" },
+    defaultValue: "btn-primary",
+  },
 
-export const LargeButton = () => (
-  <ButtonComponent
-    title='PrimaryClickMe'
-    variant='btn-secondary'
-    size='text-xl m-2 p-2'
-  />
-);
-
-export const MediumButton = () => (
-  <ButtonComponent
-    title='PrimaryClickMe'
-    variant='btn-secondary'
-    size='text-lg m-2 p-2'
-  />
-);
-
-export const SmallButton = () => (
-  <ButtonComponent
-    title='PrimaryClickMe'
-    variant='btn-secondary'
-    size='text-sm m-2 p-2'
-  />
-);
+  variant: {
+    options: ["text-base", "text-lg", "text-xl"],
+    control: { type: "select" },
+    defaultValue: "text-base",
+  },
+};
 
 export const IconButton = () => (
   <ButtonComponent
-    icon={<TiDeleteOutline size='2rem' />}
+    icon={<GoX size='2rem' color='gray' />}
     variant='btn-secondary'
     size=''
   ></ButtonComponent>
+);
+
+export const DefaultButton = () => (
+  <ButtonComponent
+    title='Default Click Me'
+    variant='bg-white dark:bg-slate-900 border-3 border-gray-300 '
+    size='p-5 text-xl dark:!text-white '
+  />
 );
