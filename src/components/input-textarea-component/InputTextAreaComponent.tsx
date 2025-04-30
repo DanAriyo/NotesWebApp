@@ -17,7 +17,7 @@ export function InputTextAreaComponent({
   size,
   placeHolder,
 }: InputTextAreaProps) {
-  const [height, setHeight] = useState("auto");
+  const [height] = useState("auto");
   const adjustHeight = (element: HTMLTextAreaElement) => {
     element.style.height = "auto";
     element.style.height = `${element.scrollHeight}px`;
