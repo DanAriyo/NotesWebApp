@@ -39,6 +39,7 @@ function NotesPage() {
   };
 
   const dbNotes = useLiveQuery(() => db.notes.toArray());
+  const dbTags = useLiveQuery(() => db.tags.toArray());
 
   const filteredNotes = useMemo(() => {
     if (!dbNotes) return [];
@@ -78,6 +79,15 @@ function NotesPage() {
       setIsPopupOpen(false);
     } catch (error) {
       console.error("Errore durante l'inserimento della nota:", error);
+      return { success: false, message: "Inserimento non riuscito!" };
+    }
+  }
+
+  async function addTag(name: string) {
+    try {
+      await db.tags.add({ name });
+    } catch (error) {
+      console.error("Errore durante l'inserimento del tag:", error);
       return { success: false, message: "Inserimento non riuscito!" };
     }
   }
@@ -190,6 +200,8 @@ function NotesPage() {
           onSave={addNote}
           item={selectedNote}
           onDelete={deleteNote}
+          tags={dbTags}
+          addTag={addTag}
         />
         <NoteListItemComponent
           notes={filteredNotes}

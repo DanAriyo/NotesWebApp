@@ -4,7 +4,10 @@ import { InputTextComponent } from "../../../components/input-text-component/Inp
 import { InputTextAreaComponent } from "../../../components/input-textarea-component/InputTextAreaComponent";
 import { ButtonComponent } from "../../../components/button-component/ButtonComponent";
 import { Note } from "../../../data/Database";
+import { Tag } from "../../../data/Database";
+
 import { LuPencilLine } from "react-icons/lu";
+import { ComboBox } from "@/components/ui/ComboBox";
 
 type NoteDetailsPopupProps = {
   isOpen: boolean;
@@ -13,6 +16,8 @@ type NoteDetailsPopupProps = {
   onSave?: (title: string, description: string, id: null | number) => void;
   onDelete?: (id: number) => void;
   icon?: React.ReactNode;
+  tags?: Tag[];
+  addTag?: (name: string) => void;
 };
 
 const NotesDetailsPopupComponent = ({
@@ -21,11 +26,14 @@ const NotesDetailsPopupComponent = ({
   item,
   onSave,
   onDelete,
+  tags,
+  addTag,
 }: NoteDetailsPopupProps) => {
   const [isEditable, setIsEditable] = useState(item.id == 0 ? true : false);
   const [description, setDescription] = useState(item.description);
   const [title, setTitle] = useState(item.title);
   const [deletePopupIsOpen, setDeletePopupIsOpen] = useState(false);
+  const [tagPopupIsOpen, setTagPopupIsOpen] = useState(false);
 
   useEffect(() => {
     setTitle(item.title);
@@ -61,6 +69,14 @@ const NotesDetailsPopupComponent = ({
               size='border-3 border-gray-200 rounded-2xl p-2 m-2 dark:bg-gray-600 resize-none overflow-y-hidden'
             ></InputTextAreaComponent>
           </form>
+
+          <ComboBox
+            open={tagPopupIsOpen}
+            setOpen={setTagPopupIsOpen}
+            choices={tags}
+            setChoices={addTag}
+          />
+
           {item.id != 0 && (
             <div className='flex flex-row border-3 rounded-2xl border-gray-200 m-2 p-2 dark:bg-gray-600'>
               <InputTextComponent
