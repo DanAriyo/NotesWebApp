@@ -4,6 +4,7 @@ type Note = {
   id: number;
   title: string;
   description: string;
+  tagId: string;
 };
 
 type Tag = {
@@ -17,7 +18,7 @@ const db = new Dexie("NotesDatabase") as Dexie & {
 };
 
 db.version(1).stores({
-  notes: "++id, title, description",
+  notes: "++id, title, description, tagId",
   tags: "++id, name",
 });
 
