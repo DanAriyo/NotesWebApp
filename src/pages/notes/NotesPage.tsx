@@ -23,6 +23,7 @@ const createEmptyNote = (): Note => {
     id: 0,
     title: "",
     description: "",
+    tagId: "",
   };
 };
 
@@ -52,10 +53,15 @@ function NotesPage() {
     );
   }, [searchString, dbNotes]);
 
+  useEffect(() => {
+    console.log(dbNotes);
+  }, [dbNotes]);
+
   async function addNote(
     title: string,
     description: string,
-    id: number | null
+    id: number | null,
+    tagId: string
   ) {
     try {
       if (id != null && id != 0) {
@@ -64,6 +70,7 @@ function NotesPage() {
         if (note) {
           note.title = title;
           note.description = description;
+          note.tagId = tagId;
 
           await db.notes.put(note);
           return { success: true, message: "Nota aggiornata con successo!" };
@@ -74,6 +81,7 @@ function NotesPage() {
         await db.notes.add({
           title,
           description,
+          tagId,
         });
       }
       setIsPopupOpen(false);
@@ -206,6 +214,7 @@ function NotesPage() {
         <NoteListItemComponent
           notes={filteredNotes}
           noteClicked={showNotePopup}
+          tags={dbTags}
         />
       </div>
     </>
