@@ -46,7 +46,7 @@ export function ComboBox({
           variant='outline'
           role='combobox'
           aria-expanded={open}
-          className=' w-[240px] justify-between '
+          className=' w-[240px] justify-between dark:text-white dark: border-white'
         >
           {currentTag?.length == 0 ? "Select Tag" : currentTag}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
@@ -57,6 +57,7 @@ export function ComboBox({
           <CommandInput
             placeholder='Search Tag...'
             onValueChange={setSearchString}
+            className='dark:text-white dark:placeholder-white dark:border-white'
           />
           <CommandList>
             <CommandEmpty>No Tag found.</CommandEmpty>
@@ -83,7 +84,7 @@ export function ComboBox({
             </CommandGroup>
           </CommandList>
           <Button
-            className='bg-white'
+            className='bg-white dark:bg-slate-800 dark:text-white dark:border-white'
             onClick={() => {
               setChoices?.(searchString);
               setOpen?.(false);

@@ -53,10 +53,6 @@ function NotesPage() {
     );
   }, [searchString, dbNotes]);
 
-  useEffect(() => {
-    console.log(dbNotes);
-  }, [dbNotes]);
-
   async function addNote(
     title: string,
     description: string,
