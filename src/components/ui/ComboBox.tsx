@@ -24,6 +24,8 @@ type ComboBoxProps = {
   setOpen?: (open: boolean) => void;
   choices?: { name: string }[];
   setChoices?: (name: string) => void;
+  currentTag?: string;
+  setCurrentTag?: (tag: string) => void;
 };
 
 export function ComboBox({
@@ -31,13 +33,11 @@ export function ComboBox({
   setOpen,
   choices,
   setChoices,
+  currentTag,
+  setCurrentTag,
 }: ComboBoxProps) {
   const [value, setValue] = React.useState("");
   const [searchString, setSearchString] = React.useState("");
-
-  React.useEffect(() => {
-    console.log(choices);
-  }, [choices]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -46,11 +46,9 @@ export function ComboBox({
           variant='outline'
           role='combobox'
           aria-expanded={open}
-          className=' w-[240px] justify-between'
+          className=' w-[240px] justify-between '
         >
-          {value
-            ? choices?.find((choice) => choice.name === value)?.name
-            : "Select Tag..."}
+          {currentTag?.length == 0 ? "Select Tag" : currentTag}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
         </Button>
       </PopoverTrigger>
@@ -70,6 +68,7 @@ export function ComboBox({
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen?.(false);
+                    setCurrentTag?.(currentValue === value ? "" : currentValue);
                   }}
                 >
                   <Check

@@ -13,7 +13,12 @@ type NoteDetailsPopupProps = {
   isOpen: boolean;
   onClosed?: () => void;
   item: Note;
-  onSave?: (title: string, description: string, id: null | number) => void;
+  onSave?: (
+    title: string,
+    description: string,
+    id: null | number,
+    tagId: string
+  ) => void;
   onDelete?: (id: number) => void;
   icon?: React.ReactNode;
   tags?: Tag[];
@@ -34,10 +39,12 @@ const NotesDetailsPopupComponent = ({
   const [title, setTitle] = useState(item.title);
   const [deletePopupIsOpen, setDeletePopupIsOpen] = useState(false);
   const [tagPopupIsOpen, setTagPopupIsOpen] = useState(false);
+  const [currentTag, setCurrentTag] = useState("");
 
   useEffect(() => {
     setTitle(item.title);
     setDescription(item.description);
+    setCurrentTag(item.tagId);
   }, [item]);
 
   return (
@@ -75,6 +82,8 @@ const NotesDetailsPopupComponent = ({
             setOpen={setTagPopupIsOpen}
             choices={tags}
             setChoices={addTag}
+            currentTag={currentTag}
+            setCurrentTag={setCurrentTag}
           />
 
           {item.id != 0 && (
@@ -98,7 +107,7 @@ const NotesDetailsPopupComponent = ({
               variant='btn-primary w-full !text-white'
               size='text-lg m-2 p-1'
               onClick={() => {
-                onSave?.(title, description, item?.id || null);
+                onSave?.(title, description, item?.id || null, currentTag);
                 onClosed?.();
               }}
               disabled={
