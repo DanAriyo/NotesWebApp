@@ -190,11 +190,6 @@ function NotesPage() {
             handleChange={handleChange}
           />
         </div>
-        {showAside && (
-          <aside>
-            <p>Ciao</p>
-          </aside>
-        )}
         <div className='flex flex-col md:flex-row items-center w-full'>
           <InputSearchComponent
             setSearchString={setSearchString}
@@ -203,30 +198,44 @@ function NotesPage() {
             icon={<IoSearch size='1.5rem' />}
           />
         </div>
-        <div className='flex flex-col mx-auto m-3'>
-          <ButtonComponent
-            title='Crea nuova nota'
-            onClick={() => {
-              showNotePopup(createEmptyNote());
-            }}
-            variant='bg-white dark:bg-slate-900 border-3 border-gray-300 '
-            size='p-5 text-xl dark:!text-white '
-          />
+        <div className='flex min-h-screen w-full'>
+          {showAside && (
+            <div className='w-1/2 bg-gray-100 p-4'>
+              <aside>Ciaoo sono il menu</aside>
+            </div>
+          )}
+
+          <div
+            className={`${
+              showAside ? "w-1/2" : "w-full"
+            } flex flex-col mx-auto m-3`}
+          >
+            <ButtonComponent
+              title='Crea nuova nota'
+              onClick={() => {
+                showNotePopup(createEmptyNote());
+              }}
+              variant='bg-white dark:bg-slate-900 border-3 border-gray-300 '
+              size='p-5 text-xl dark:!text-white '
+            />
+
+            <NotesDetailsPopupComponent
+              isOpen={isPopupOpen}
+              onClosed={() => setIsPopupOpen(false)}
+              onSave={addNote}
+              item={selectedNote}
+              onDelete={deleteNote}
+              tags={dbTags}
+              addTag={addTag}
+            />
+
+            <NoteListItemComponent
+              notes={filteredNotes}
+              noteClicked={showNotePopup}
+              tags={dbTags}
+            />
+          </div>
         </div>
-        <NotesDetailsPopupComponent
-          isOpen={isPopupOpen}
-          onClosed={() => setIsPopupOpen(false)}
-          onSave={addNote}
-          item={selectedNote}
-          onDelete={deleteNote}
-          tags={dbTags}
-          addTag={addTag}
-        />
-        <NoteListItemComponent
-          notes={filteredNotes}
-          noteClicked={showNotePopup}
-          tags={dbTags}
-        />
       </div>
     </>
   );
