@@ -1,5 +1,6 @@
 {
   "name": "my-app",
+  "homepage": "https://DanAriyo.github.io/<NotesWebApp>/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +9,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "ladle": "ladle serve"
+    "ladle": "ladle serve",
+    "predeploy": "buun run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",

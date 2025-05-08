@@ -195,7 +195,7 @@ function NotesPage() {
           <InputSearchComponent
             setSearchString={setSearchString}
             value={searchString}
-            size=' border-3 border-gray-200 rounded-2xl w-[80%] md:w-[60%] p-2 pl-10 text-xl'
+            size=' border-3 border-gray-200 rounded-2xl w-[90%] md:w-[90%] p-2 pl-10 text-xl'
             icon={<IoSearch size='1.5rem' />}
           />
         </div>

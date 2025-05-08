@@ -14,8 +14,8 @@ function InputSearchComponent({
   icon,
 }: InputSearchProps) {
   return (
-    <div className='flex flex-col items-center m-5 p-1 relative w-[70%] md:w-[90%] '>
-      <span className='absolute left-[13%] bottom-[30%] md:left-[21%] text-gray-400'>
+    <div className='flex flex-col items-center m-5 p-1 relative lg:left-[23%] w-[70%] md:w-[77%] md:left-[8%] lg:w-[53%]'>
+      <span className='absolute left-[13%] bottom-[30%] md:left-[7%] text-gray-400'>
         {icon}
       </span>
       <input
