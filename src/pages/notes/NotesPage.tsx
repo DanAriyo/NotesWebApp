@@ -173,7 +173,7 @@ function NotesPage() {
   return (
     <>
       <div className='flex flex-col items-center mx-auto bg-white dark:bg-slate-900 text-black dark:text-white min-h-screen'>
-        <div className='flex flex-row w-full justify-center md:justify-between'>
+        <div className='flex flex-col md:flex-row justify-between w-full'>
           <div className='hidden md:flex'>
             <MenuComponent
               icon={<IoMenu size='2rem' />}
@@ -181,6 +181,12 @@ function NotesPage() {
               showAside={showAside}
             />
           </div>
+          <InputSearchComponent
+            setSearchString={setSearchString}
+            value={searchString}
+            size=' border-3 border-gray-200 rounded-2xl w-[80%] md:w-[60%] p-2 pl-10 text-xl'
+            icon={<IoSearch size='1.5rem' />}
+          />
           <ChoiceBoxComponent
             lightModeIcon={<IoIosSunny size='2rem' />}
             darkModeIcon={<BsMoonStars size='1.5rem' />}
@@ -190,34 +196,28 @@ function NotesPage() {
             handleChange={handleChange}
           />
         </div>
-        <div className='flex flex-col md:flex-row items-center w-full'>
-          <InputSearchComponent
-            setSearchString={setSearchString}
-            value={searchString}
-            size=' border-3 border-gray-200 rounded-2xl w-[80%] md:w-[60%] p-2 pl-10 text-xl'
-            icon={<IoSearch size='1.5rem' />}
-          />
-        </div>
         <div className='flex min-h-screen w-full'>
           {showAside && (
-            <div className='w-1/2 bg-gray-100 p-4'>
+            <div className='w-1/4  p-4'>
               <aside>Ciaoo sono il menu</aside>
             </div>
           )}
 
           <div
             className={`${
-              showAside ? "w-1/2" : "w-full"
+              showAside ? "w-3/4" : "w-full"
             } flex flex-col mx-auto m-3`}
           >
-            <ButtonComponent
-              title='Crea nuova nota'
-              onClick={() => {
-                showNotePopup(createEmptyNote());
-              }}
-              variant='bg-white dark:bg-slate-900 border-3 border-gray-300 '
-              size='p-5 text-xl dark:!text-white '
-            />
+            <div className='w-full flex justify-center'>
+              <ButtonComponent
+                title='Crea nuova nota'
+                onClick={() => {
+                  showNotePopup(createEmptyNote());
+                }}
+                variant='bg-white dark:bg-slate-900 border-3 border-gray-300 w-[20%] '
+                size='p-5 text-xl dark:!text-white '
+              />
+            </div>
 
             <NotesDetailsPopupComponent
               isOpen={isPopupOpen}
