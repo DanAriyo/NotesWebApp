@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+      );
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/<NotesWebApp>/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <script type="module" crossorigin src="/&lt;NotesWebApp&gt;/assets/index-D_cbDk84.js"></script>
+    <link rel="stylesheet" crossorigin href="/&lt;NotesWebApp&gt;/assets/index-B5PNEzO6.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
