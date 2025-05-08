@@ -190,11 +190,7 @@ function NotesPage() {
             handleChange={handleChange}
           />
         </div>
-        {showAside && (
-          <aside>
-            <p>Ciao</p>
-          </aside>
-        )}
+
         <div className='flex flex-col md:flex-row items-center w-full'>
           <InputSearchComponent
             setSearchString={setSearchString}
