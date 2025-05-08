@@ -17,6 +17,8 @@ import { IoSearch } from "react-icons/io5";
 import { BsMoonStars } from "react-icons/bs";
 import { IoIosSunny } from "react-icons/io";
 import { MdMonitor } from "react-icons/md";
+import { IoMenu } from "react-icons/io5";
+import MenuComponent from "@/components/menu-component/MenuComponent";
 
 const createEmptyNote = (): Note => {
   return {
@@ -29,6 +31,7 @@ const createEmptyNote = (): Note => {
 
 function NotesPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [showAside, setShowAside] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [selectedNote, setSelectedNote] = useState<Note>(createEmptyNote());
   const [selectedTheme, setSelectedTheme] = useState(
@@ -170,7 +173,14 @@ function NotesPage() {
   return (
     <>
       <div className='flex flex-col items-center mx-auto bg-white dark:bg-slate-900 text-black dark:text-white min-h-screen'>
-        <div className='flex flex-row w-full justify-center md:justify-end'>
+        <div className='flex flex-row w-full justify-center md:justify-between'>
+          <div className='hidden md:flex'>
+            <MenuComponent
+              icon={<IoMenu size='2rem' />}
+              setShowAside={() => setShowAside((prev) => !prev)}
+              showAside={showAside}
+            />
+          </div>
           <ChoiceBoxComponent
             lightModeIcon={<IoIosSunny size='2rem' />}
             darkModeIcon={<BsMoonStars size='1.5rem' />}
@@ -180,6 +190,11 @@ function NotesPage() {
             handleChange={handleChange}
           />
         </div>
+        {showAside && (
+          <aside>
+            <p>Ciao</p>
+          </aside>
+        )}
         <div className='flex flex-col md:flex-row items-center w-full'>
           <InputSearchComponent
             setSearchString={setSearchString}
