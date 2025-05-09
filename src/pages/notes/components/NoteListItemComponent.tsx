@@ -43,7 +43,7 @@ function NoteListItemComponent({
         {notes?.map((note) => (
           <div
             key={note.id}
-            className=' border-3 border-gray-200 rounded-2xl m-4 cursor-pointer  min-w-[70%] max-w-[70%] min-h-[80%] max-h-[80%] hover:shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200'
+            className=' border-3 border-gray-200 rounded-2xl m-4 cursor-pointer  min-w-[50%] max-w-[50%] min-h-[80%] max-h-[80%] hover:shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200'
             onClick={() => noteClicked?.(note)}
           >
             <h2 className='text-center text-xl font-semibold  m-1.5'>

@@ -19,6 +19,10 @@ import { IoIosSunny } from "react-icons/io";
 import { MdMonitor } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import MenuComponent from "@/components/menu-component/MenuComponent";
+import { MdOutlineLightbulb } from "react-icons/md";
+import { FaTrashCan } from "react-icons/fa6";
+import { FaTags } from "react-icons/fa";
+import MenuChoicesComponent from "@/components/menu-component/MenuChoicesComponent";
 
 const createEmptyNote = (): Note => {
   return {
@@ -37,6 +41,7 @@ function NotesPage() {
   const [selectedTheme, setSelectedTheme] = useState(
     localStorage.theme || "os"
   );
+  const [selectedChoice, setSelectedChoice] = useState("Note");
 
   const handleChange = (event: { target: { id: SetStateAction<string> } }) => {
     setSelectedTheme(event.target.id);
@@ -174,7 +179,7 @@ function NotesPage() {
     <>
       <div className='flex flex-col items-center mx-auto bg-white dark:bg-slate-900 text-black dark:text-white min-h-screen'>
         <div className='flex flex-col md:flex-row justify-between w-full'>
-          <div className='hidden md:flex'>
+          <div className='hidden md:flex pl-4'>
             <MenuComponent
               icon={<IoMenu size='2rem' />}
               setShowAside={() => setShowAside((prev) => !prev)}
@@ -198,14 +203,18 @@ function NotesPage() {
         </div>
         <div className='flex min-h-screen w-full'>
           {showAside && (
-            <div className='w-1/4  p-4'>
-              <aside>Ciaoo sono il menu</aside>
-            </div>
+            <MenuChoicesComponent
+              tagsIcon={<FaTags size={"2rem"} className='m-4' />}
+              notesIcon={<MdOutlineLightbulb size={"2rem"} className='m-4' />}
+              trashIcon={<FaTrashCan size={"2rem"} className='m-4' />}
+              selectedChoice={selectedChoice}
+              setSelectedChoice={setSelectedChoice}
+            />
           )}
 
           <div
-            className={`${
-              showAside ? "w-3/4" : "w-full"
+            className={`transition-all duration-300 ease-in-out ${
+              showAside ? "w-5/6" : "w-full"
             } flex flex-col mx-auto m-3`}
           >
             <div className='w-full flex justify-center'>
@@ -242,3 +251,22 @@ function NotesPage() {
 }
 
 export default NotesPage;
+
+// <div className='w-1/6 flex flex-col p-2'>
+//   <aside>
+//     <div className='flex flex-row items-center rounded-4xl hover:bg-slate-400'>
+//       <MdOutlineLightbulb size={"2rem"} className='m-4' />
+//       <p className='text-center text-lg'>Note</p>
+//     </div>
+
+//     <div className='flex flex-row items-center rounded-4xl hover:bg-slate-400'>
+//       <FaTrashCan size={"2rem"} className='m-4' />
+//       <p className='text-center text-lg'>Cestino</p>
+//     </div>
+
+//     <div className='flex flex-row items-center rounded-4xl hover:bg-slate-400'>
+//       <FaTags size={"2rem"} className='m-4' />
+//       <p className='text-center text-lg'>Tag</p>
+//     </div>
+//   </aside>
+// </div>
