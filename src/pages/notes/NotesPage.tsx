@@ -173,14 +173,7 @@ function NotesPage() {
   return (
     <>
       <div className='flex flex-col items-center mx-auto bg-white dark:bg-slate-900 text-black dark:text-white min-h-screen'>
-        <div className='flex flex-row w-full justify-center md:justify-between'>
-          <div className='hidden md:flex'>
-            <MenuComponent
-              icon={<IoMenu size='2rem' />}
-              setShowAside={() => setShowAside((prev) => !prev)}
-              showAside={showAside}
-            />
-          </div>
+        <div className='flex flex-row w-full justify-center md:justify-end'>
           <ChoiceBoxComponent
             lightModeIcon={<IoIosSunny size='2rem' />}
             darkModeIcon={<BsMoonStars size='1.5rem' />}
